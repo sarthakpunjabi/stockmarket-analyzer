@@ -1,0 +1,51 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% load myfilters %}
+{% block title %}
+Stock tracker
+{% endblock %}
+{% block css %}
+<style>
+
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <h1>Livestocktracker</h1>
+    <table class="table-container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">SNo.</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Price</th>
+            <th scope="col">Previous Close</th>
+            <th scope="col">Open</th>
+            <th scope="col">Market cap</th>
+            <th scope="col">Volume</th>
+            <!-- <th scope="col">Change</th> -->
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for key,value in data.items %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{key}}</td>
+            <td>{{value|get:"Quote Price" }}</td>
+            <td>{{value|get:"Previous Close" }}</td>
+            <td>{{value|get:"Open" }}</td>
+            <td>{{value|get:"Market Cap" }}</td>
+            <td>{{value|get:"Volume" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </table>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+
+</script>
+{% endblock %}
